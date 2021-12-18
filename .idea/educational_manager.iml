@@ -23,5 +23,15 @@
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/educational_manager/administrator/templates" />
+        <option value="$MODULE_DIR$/educational_manager/student/templates" />
+        <option value="$MODULE_DIR$/educational_manager/teacher/templates" />
+        <option value="$MODULE_DIR$/educational_manager/teacher/templates/teacher" />
+        <option value="$MODULE_DIR$/educational_manager/student/templates/student" />
+        <option value="$MODULE_DIR$/educational_manager/administrator/templates/administrator" />
+      </list>
+    </option>
   </component>
 </module>
