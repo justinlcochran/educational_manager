@@ -1,0 +1,17 @@
+{% extends 'teacher/base.html' %}
+{% load static %}
+
+{% block title %}
+home
+{% endblock title %}
+
+{% block scripts %}
+<script src={% static 'teacher.js' %} defer></script>
+{% endblock scripts %}
+
+{% block content %}
+    {% for standard in standard_list %}
+    <div id="standardSpace">
+    </div>
+    {% endfor %}
+{% endblock content %}

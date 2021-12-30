@@ -1,0 +1,70 @@
+{% extends 'teacher/base.html' %}
+{% load static %}
+
+{% block title %}
+Know Show Chart
+{% endblock title %}
+
+{% block scripts %}
+<script src={% static 'knowShowChart.js' %} defer></script>
+{% endblock scripts %}
+
+{% block content %}
+<form id="chartBuilder" name="chartBuilder" method="POST" action="{% url 'teacher:saveKnowShowChart' %}">
+{% csrf_token %}
+    <select onchange="standardContentDisplay()" id="standardsDropDown" name="standardsDropDown" form="chartBuilder">
+        <option selected disabled value="1">Select a Standard</option>
+        {% for code in standardCodes %}
+        <option value="{{ code }}">{{ code }}</option>
+        {% endfor %}
+    </select>
+    <p style="position: absolute" id="display-text">^^Choose a Standard^^</p>
+    {% for code in standardCodes %}
+    <p style="position: absolute" class="hidden" id="{{ code }}">{{ code.text }}</p>
+    {% endfor %}
+    <div class="center" id="container-div">
+        <table class="center">
+            <tr>
+                <td style="vertical-align: top">
+                    <div class="center" id="section1">
+
+                        <div style='width: 100%;' class="popup" onclick="popupDisplay('know-pop')"><h1 class="center center-text">Know</h1>
+                            <span class="popuptext" id="know-pop">Know entries should be full sentences representing the information students should learn and retain through the course of learning this standard.</span>
+                        </div>
+                        <div class="center" id="know-div">
+                            <textarea class="center" id="know1" name="know1" form="chartBuilder" onkeyup="if (this.scrollHeight > this.clientHeight) this.style.height = this.scrollHeight + 'px';"></textarea>
+                        </div>
+                        <button class="center block add-button" type="button" onClick="add_item(this)" name="know">+</button>
+                    </div>
+                </td>
+                <td style="vertical-align: top">
+                    <div class="center" id="section2">
+                         <div style='width: 100%;' class="popup" onclick="popupDisplay('show-pop')"><h1 class="center center-text">Show</h1>
+                            <span class="popuptext" id="show-pop">Show entries should be 'I can...' statements indicating skills that students will develop through the course of learning this standard.</span>
+                        </div>
+                        <div class="center" id="show-div">
+                            <textarea class="center" id="show1" name="show1" form="chartBuilder" onkeyup="if (this.scrollHeight > this.clientHeight) this.style.height = this.scrollHeight + 'px';"></textarea>
+                        </div>
+                        <button class="center block add-button" type="button" onClick="add_item(this)" name="show">+</button>
+                    </div>
+                </td>
+                <td style="vertical-align: top">
+                    <div class="center" id="section3">
+                        <div style='width: 100%;' class="popup" onclick="popupDisplay('scaffold-pop')"><h1 class="center center-text">Scaffold</h1>
+                            <span class="popuptext" id="scaffold-pop">Scaffold entries should be knowledge and skills that students need to have mastered previously in order to succeed in learning this standard. This list is purely for planning and will not be incorporated into the assessment design workflow.</span>
+                        </div>
+                        <div class="center" id="scaffold-div">
+                            <textarea class="center" id="scaffold1" name="scaffold1" form="chartBuilder" onkeyup="if (this.scrollHeight > this.clientHeight) this.style.height = this.scrollHeight + 'px';"></textarea>
+                        </div>
+                        <button class="center block add-button" type="button" onClick="add_item(this)" name="scaffold">+</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+
+
+    </div>
+<input class="center" type="submit">
+</form>
+{% endblock content %}
