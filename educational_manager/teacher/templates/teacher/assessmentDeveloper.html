@@ -10,27 +10,33 @@ Assessment Developer
 {% endblock scripts %}
 
 {% block content %}
-    <form method="POST" id="assessmentBuilder" name="assessmentBuilder" action="{% url 'teacher:saveQuestion' pk=1 %}">
+    <form method="POST" id="assessmentBuilder" name="assessmentBuilder" action="{% url 'teacher:saveQuestion' ksid aid %}">
     {% csrf_token %}
     <div class="know-show-display">
         <h1 class="center center-text">Know - Show Chart</h1>
         <div class="know-list">
             <ul style="list-style: none">
-            {% for know in knows %}
+            {% for know in knowRemaining %}
                 <li><input type="checkbox" form="assessmentBuilder" id="{{ know }}" name="{{ know }}">{{ know }}</li>
+            {% endfor %}
+            {% for know in knowSatisfied %}
+                <li><strike>{{ know }}</strike></li>
             {% endfor %}
             </ul>
         </div>
         <div class="show-list">
             <ul style="list-style: none">
-                {% for show in shows %}
+                {% for show in showRemaining %}
                     <li><input type="checkbox" form="assessmentBuilder" id="{{ show }}" name="{{ show }}">{{ show }}</li>
+                {% endfor %}
+                {% for show in showSatisfied %}
+                    <li><strike>{{ show }}</strike></li>
                 {% endfor %}
             </ul>
         </div>
     </div>
     <div style="float: left; margin-left: 4%">
-        <h3>Question 1:</h3>
+        <h3>Question {{ questionNumber }}:</h3>
         <textarea rows="8" cols="60" form="assessmentBuilder" name="question-text"></textarea>
         <h3>Answers:</h3>
         <div id="answers-div">

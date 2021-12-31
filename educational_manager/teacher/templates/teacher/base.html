@@ -14,6 +14,14 @@
 
 </head>
 <body>
+    <div class="header" id="header">
+        <h1 style="display: inline-block">Welcome, {{ request.user.first_name }}!</h1>
+        <a href="{% url 'teacher:knowShowChart' %}"><button class="dash-button" type="button">Data</button></a>
+        <a href="{% url 'teacher:knowShowChart' %}"><button class="dash-button" type="button">Assign</button></a>
+        <a href="{% url 'teacher:create' %}"><button class="dash-button" type="button">Create</button></a>
+        <a href="{% url 'teacher:teacherHome' %}"><button class="dash-button" type="button">Home</button></a>
+
+    </div>
     <div>
         {% block content %}
         {% endblock content %}

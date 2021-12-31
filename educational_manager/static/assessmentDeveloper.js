@@ -9,7 +9,7 @@ function add_item(elem) {
     const new_radio = document.createElement('input');
     new_radio.setAttribute('type', 'radio')
     new_radio.setAttribute('id', `answer${table.rows.length}-radio`)
-    new_radio.setAttribute('name', `correct-answer`)
+    new_radio.setAttribute('name', `correct`)
     new_radio.setAttribute('value', `answer${table.rows.length}`)
     new_slot_1.appendChild(new_radio)
     const new_slot_2 = document.createElement('td')

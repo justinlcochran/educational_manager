@@ -1,0 +1,47 @@
+{% extends 'teacher/base.html' %}
+{% load static %}
+
+{% block title %}
+Create
+{% endblock title %}
+
+{% block scripts %}
+<script src={% static 'create.js' %} defer></script>
+{% endblock scripts %}
+
+{% block content %}
+    <div class="container">
+    <table style="margin-top: 5%;" class="center">
+        <tr>
+            <td style="padding:10px">
+                <div>
+                    <a href="{% url 'teacher:knowShowChart' %}">
+                        <button>
+                            <img class="button-label" src="https://ucarecdn.com/926942c0-0b7a-46f0-ac60-a1ef13090620/KnowShowChart.png"/>
+                        </button>
+                    </a>
+                </div>
+            </td>
+            <td style="padding:10px">
+                <div>
+                    <a href="{% url 'teacher:knowShowSelector' %}">
+                        <button>
+                            <img class="button-label" src="https://ucarecdn.com/7ba4632e-3319-4153-8ce2-31ca33582832/Assessment.png"/>
+                        </button>
+                    </a>
+                </div>
+            </td>
+            <td style="padding:10px">
+                <div>
+                    <a href="{% url 'teacher:knowShowSelector' %}">
+                        <button>
+                            <img class="button-label" src="https://ucarecdn.com/1ccd698a-3f15-452d-a52e-45b245338dc1/Enrollments.png"/>
+                        </button>
+                    </a>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    </div>
+{% endblock content %}

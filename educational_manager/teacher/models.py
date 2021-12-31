@@ -70,8 +70,7 @@ class Assessment(models.Model):
 
 class Question(models.Model):
     assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
-    know_satisfied = models.JSONField()
-    show_satisfied = models.JSONField()
+    satisfied = models.JSONField()
     text = models.CharField(max_length=200)
     created = models.DateField(auto_now_add=True)
 
@@ -80,6 +79,9 @@ class Question(models.Model):
 
     def get_answers(self):
         return self.answer_set.all()
+
+    def __str__(self):
+        return self.text
 
 
 class Answer(models.Model):

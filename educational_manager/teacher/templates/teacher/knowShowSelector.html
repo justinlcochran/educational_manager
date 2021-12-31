@@ -1,0 +1,27 @@
+{% extends 'teacher/base.html' %}
+{% load static %}
+
+{% block title %}
+Select a Know Show Chart
+{% endblock title %}
+
+{% block scripts %}
+<script src={% static 'knowShowSelector.js' %} defer></script>
+{% endblock scripts %}
+
+{% block content %}
+    <div class="container">
+    <select onchange="standardContentDisplay()" id="standardsDropDown" name="standardsDropDown" form="chartBuilder">
+        <option selected disabled value="1">Select a Standard</option>
+        {% for code in standardCodes %}
+        <option value="{{ code.id }}">{{ code }}</option>
+        {% endfor %}
+    </select>
+    <p style="position: absolute" id="display-text">^^Choose a Standard^^</p>
+    {% for code in standardCodes %}
+    <p style="position: absolute" class="hidden" id="{{ code.id }}">{{ code.text }}</p>
+    {% endfor %}
+    <div class="chart-container" id="chart-container">
+
+    </div>
+{% endblock content %}
